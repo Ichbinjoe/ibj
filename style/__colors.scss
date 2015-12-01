@@ -1,0 +1,12 @@
+$primary-background: darken(white, 10%);
+$link-color: #65335c;
+$text-color: lighten(black, 30%);
+
+body {
+  background-color: $primary-background;
+  color: $text-color;
+}
+
+a {
+  color: $link-color;
+}

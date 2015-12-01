@@ -1,0 +1,19 @@
+.imgCircle {
+  border-radius: 50%;
+  box-shadow: 5px -5px 2px darken($primary-background, 5%);
+}
+
+@mixin fit($i) {
+  max-height: $i;
+  max-width: $i;
+  width: auto;
+  height: auto;
+}
+
+.fit100 {
+  @include fit(100px);
+}
+
+.fit50 {
+  @include fit(50px);
+}

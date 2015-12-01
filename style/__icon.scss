@@ -1,0 +1,44 @@
+@import '__colors.scss';
+
+.icon {
+  width: 120px;
+  height: 120px;
+  overflow: hidden;
+  box-sizing: content-box;
+}
+
+.icon.small {
+  width: 60px;
+  height: 60px;
+  margin: auto
+}
+
+.icon .rounded {
+  padding: 10px;
+  border-radius: 10px;
+  display: flex;
+}
+
+.icon.small .rounded {
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.icon:not(:first-child) {
+  padding-left: 10px;
+}
+
+.icon:not(:last-child) {
+  border-right: 2px solid darken($primary-background, 20%);
+  padding-right: 10px;
+}
+
+a.rounded:hover {
+  background-color: darken($primary-background, 30%)
+}
+
+.iconrow {
+  @extend .clearfix;
+  margin: auto;
+  display: inline-flex;
+}

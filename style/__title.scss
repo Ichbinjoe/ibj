@@ -1,0 +1,20 @@
+.title, .subtitle {
+  @extend .centertext
+}
+
+.title {
+  font-size: 2em;
+}
+
+.subtitle {
+  font-size: 1em;
+}
+
+.subtitle {
+  font-style: italic;
+}
+
+.titleWrapper {
+  vertical-align: middle;
+  margin: 25px;
+}

@@ -1,0 +1,22 @@
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.right {
+  float: right
+}
+
+.left {
+  float: left
+}
+
+.centertext {
+  vertical-align: middle;
+  text-align: center;
+}
+
+.clear {
+  clear: both;
+}
