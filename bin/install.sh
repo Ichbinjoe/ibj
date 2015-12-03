@@ -36,15 +36,6 @@ if [ ! -d ${ROOTDIR} ]; then
     chmod -R 744 ./ #Restrict back down
     chown -R ibjio ./
 
-    if [ ! -f /etc/init.d/ibjio ]; then
-        echo "Creating service link"
-        ln bin/daemon.sh /etc/init.d/ibjio
-        update-rc.d ibjio defaults
-    fi
-
-    echo "Starting service..."
-    service ibjio start
 else
-    echo "Service already installed, simply running update"
-    service ibjio update
+    echo "Nothing to install"
 fi
