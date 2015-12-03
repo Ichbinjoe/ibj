@@ -27,16 +27,19 @@ if [ ! -d ${ROOTDIR} ]; then
 
     echo "Chown/chmod on /etc/ibjio"
     chown -R ibjio ./
-    chmod -R 744 ./
+    chmod -R 777 ./ #Temporary all write access for npm install
+    #We have to do this because node-sass seems to fail if not everyone has full permissions.
+    #I don't feel like fucking around trying to find why this is, but here is the cheat.
 
     npm install
 
-
+    chmod -R 744 ./ #Restrict back down
+    chown -R ibjio ./
 
     if [ ! -f /etc/init.d/ibjio ]; then
-    echo "Creating service link"
-    ln bin/daemon.sh /etc/init.d/ibjio
-    update-rc.d ibjio defaults
+        echo "Creating service link"
+        ln bin/daemon.sh /etc/init.d/ibjio
+        update-rc.d ibjio defaults
     fi
 
     echo "Starting service..."
