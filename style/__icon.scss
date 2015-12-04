@@ -42,3 +42,12 @@ a.rounded:hover {
   margin: auto;
   display: inline-flex;
 }
+
+.textItem:not(:last-child) {
+  border-right: 2px solic darken($primary-background, 20%);
+  padding-right: 10px;
+}
+
+.textItem:not(:first-child) {
+  padding-left: 10px;
+}

@@ -10,3 +10,7 @@ body {
 a {
   color: $link-color;
 }
+
+a:visited {
+  color: $link-color; //Do not change for when link is visited
+}
