@@ -13,8 +13,9 @@
     "file-stream-rotator": "0.0.6",
     "jade": "~1.11.0",
     "morgan": "~1.6.1",
-    "node-sass-middleware": "0.9.7",
+    "node-sass-middleware": "~0.9.7",
     "serve-favicon": "~2.3.0",
-    "lodash": "^3.0.0"
+    "lodash": "^3.0.0",
+    "jstransformer-marked": "~1.0.1"
   }
 }
