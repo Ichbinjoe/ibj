@@ -1,5 +1,4 @@
 $primary-background: darken(white, 10%);
-$link-color: #65335c;
 $text-color: lighten(black, 30%);
 
 body {
@@ -8,9 +7,9 @@ body {
 }
 
 a {
-  color: $link-color;
+  color: $text-color;
 }
 
 a:visited {
-  color: $link-color; //Do not change for when link is visited
+  color: $text-color; //Do not change for when link is visited
 }
