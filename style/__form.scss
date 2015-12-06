@@ -1,0 +1,52 @@
+@import '__colors.scss';
+
+label {
+  font-weight: bold;
+  margin: 10px;
+}
+
+form {
+  padding: 20px;
+}
+
+input, textarea {
+  padding: 10px;
+}
+
+textarea {
+  resize: none;
+}
+
+input[type=text], textarea {
+  border-radius: 5px;
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid $form-input-border-color;
+  background-color: $form-input-bg;
+  &:focus {
+    box-shadow: 0 0 3px 2px lightblue;
+    outline: none;
+  }
+}
+
+input[type=radio] {
+  display: inline-block;
+}
+
+button {
+  padding: 10px;
+  border-radius: 5px;
+  background-color: $form-submit-bg;
+  border: 1px solid $form-input-border-color;
+  box-shadow: none;
+  &:hover {
+    background-color: darken($form-submit-bg, 10%)
+  }
+}
+
+.g-recaptcha-container {
+  max-width: 300px;
+}
+.input {
+  margin-bottom: 20px;
+}

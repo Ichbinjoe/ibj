@@ -7,6 +7,8 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var FileStreamRotator = require('file-stream-rotator');
 
+var cfg = require('./config');
+
 var routes = require('./routes/index');
 
 var app = express();
@@ -18,7 +20,8 @@ app.set('view engine', 'jade');
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 
-var logDirectory = '/var/log/ibjio';
+
+var logDirectory = cfg.logDir;
 
 // ensure log directory exists
 fs.existsSync(logDirectory) || fs.mkdirSync(logDirectory);
@@ -44,6 +47,7 @@ app.use(require('node-sass-middleware')({
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
+app.use('/v', require('./routes/votifier'));
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

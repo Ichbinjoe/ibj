@@ -1,0 +1,95 @@
+extends ../layout
+
+block title
+    title='Votifier Tester - ibj'
+
+block script
+    meta(name="Description" content="Test your votifier and NuVotifier setups for free")
+    script(src='https://www.google.com/recaptcha/api.js')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js')
+    script.
+        function updateTkn() {
+            if ($("#v2").is(":checked")) {
+                $("#methodLabel").html('Token')
+                $("#methodInput").attr('placeholder','Insert token here')
+            } else {
+                $("#methodLabel").html('Public Key')
+                $('#methodInput').attr('placeholder','Insert public key here')
+            }
+        }
+
+        function validateSubmission() {
+            var ip = $("#ip").val();
+            if(!ip){
+                return canGo(false)
+            }
+            var ipport = ip.split(':');
+            if(ipport.length > 2){
+                return canGo(false);
+            }
+            if(!ipport[0].match('^([a-zA-Z0-9]|[a-zA-Z0-9][a-zA-Z0-9\-]{0,61}[a-zA-Z0-9])(\.([a-zA-Z0-9]|[a-zA-Z0-9][a-zA-Z0-9\-]{0,61}[a-zA-Z0-9]))*$')){
+                return canGo(false);
+            }
+            if(ipport.length == 2 && !ipport[1].match('^([0-9]{1,4}|[1-5][0-9]{4}|6[0-4][0-9]{3}|65[0-4][0-9]{2}|655[0-2][0-9]|6553[0-5])$')){
+                return canGo(false);
+            }
+
+            if(!$("#playername").val()){
+                return canGo(false);
+            }
+            if(!$("#methodInput").val()){
+                return canGo(false);
+            }
+            canGo(true);
+        }
+
+        function canGo(valid) {
+            $("button[type='submit']").prop('disabled',!valid)
+        }
+
+
+block content
+    div.horizCenter.naturalWidth
+        h1 Votifier v2
+        p.
+            This is a free website for testing your NuVotifier/Votifier configurations.
+            For each vote (both version 1 and version 2), the site name will be listed
+            as 'ibj.io', and the player's IP address will be your ip address.
+            This form supports both v1 (normal votifier) and v2 (NuVotifier). At no point
+            is your token or public key logged for future use.
+        each error in errors
+            div.alert.error=error
+        each i in info
+            div.alert.info=i
+        form.horizCenter(method='post')
+            div.input
+                label Votifier IP(:port (defaults to 8192))
+                input#ip(type='text' maxlength=255 placeholder='127.0.0.1' name='ip' oninput='validateSubmission()' required)
+            div.input
+                label Method
+                input#v2(type='radio' name='method' value='v2' onchange='updateTkn()' checked)
+                span NuVotifier (v2)
+                input#v1(type='radio' name='method' value='v1' onchange='updateTkn()')
+                span Votifier (v1) [Normal]
+            div.input
+                label#methodLabel Token
+                textarea#methodInput(name='tkn' placeholder='Insert token here' oninput='validateSubmission()' rows=4 required)
+                span#tipzone
+            div.input
+                label Player name
+                input#playername(type='text' placeholder='Ichbinjoe' maxlength=16 name='playername' oninput='validateSubmission()' required)
+            div.input.g-recaptcha-container
+                div.g-recaptcha(data-sitekey=sitekey)
+            div.input.right
+                button(type='submit' disabled) Vote
+
+        h2 NuVotifier vs Votifier
+        p.
+            NuVotifier is a recreation of the original Votifier project. It is nearly 100% drop in
+            compatible with the original Votifier, while offering important performance, security, and
+            assurance improvements. This website is able to detect various different errors that may occur
+            with both NuVotifier as well as the original Votifier. To ensure that your votes are being recieved
+            and handled correctly, download NuVotifier, developed by Tux and I.
+
+        p
+            a(href="https://www.spigotmc.org/resources/nuvotifier.13449/") NuVotifier

@@ -1,0 +1,11 @@
+{
+    "version": 1,
+    "logDir": "<logdir>",
+    "recaptcha": {
+        "secret": "<secret secret>",
+        "sitekey": "<secret sitekey>"
+    },
+    "votifier":{
+        "serviceName": "ibj.io"
+    }
+}

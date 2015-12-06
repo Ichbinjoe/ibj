@@ -1,3 +1,5 @@
+$natural-width: 800px;
+
 .container {
   display: flex
 }
@@ -8,4 +10,8 @@
 
 .vert {
   align-items: center;
+}
+
+.naturalWidth {
+  max-width: $natural-width;
 }

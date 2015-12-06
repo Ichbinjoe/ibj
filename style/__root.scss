@@ -8,6 +8,10 @@ hr {
   margin: 15px;
 }
 
+p {
+  margin: 5px;
+}
+
 @import '__colors.scss';
 @import '__utils.scss';
 @import '__container.scss';
@@ -15,3 +19,5 @@ hr {
 @import '__align.scss';
 @import '__img.scss';
 @import '__title.scss';
+@import '__form.scss';
+@import '__alert.scss';

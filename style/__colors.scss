@@ -1,6 +1,16 @@
 $primary-background: darken(white, 10%);
 $text-color: lighten(black, 30%);
 
+$form-input-bg: lighten($primary-background, 10%);
+$form-input-border-color: darken($primary-background,20%);
+$form-submit-bg: lighten(green, 50%);
+
+$alert-bg: darken($primary-background, 20%);
+$alert-border: darken($alert-bg, 10%);
+
+$alert-error-bg: lighten(red, 40%);
+$alert-info-bg: lighten(skyblue, 10%);
+
 body {
   background-color: $primary-background;
   color: $text-color;

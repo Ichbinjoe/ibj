@@ -1,0 +1,20 @@
+@import '__colors.scss';
+
+.alert {
+  width: 100%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: $alert-bg;
+  border: 1px solid $alert-border;
+  box-sizing: border-box;
+}
+
+.alert.error {
+  background-color: $alert-error-bg
+}
+
+.alert.info {
+  background-color: $alert-info-bg
+}
