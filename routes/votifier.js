@@ -84,6 +84,8 @@ router.post('/', setUp, function (req, res) {
                             res.error(ip + ":" + port + ' is not a NuVotifier v2 port. Use the v1 option to test this server.');
                         } else if (err.message.startsWith('DecoderException: ')) {
                             res.error('The token passed for ' + ip + ":" + port + ' has failed. Make sure your token is right. Remember, the serviceName is ibj.io!');
+                        } else if (err.message == 'Socket timeout') {
+                            res.error(ip + " and the port " + port + " did not respond. Make sure votifier is running on this port and it isn't firewalled.");
                         } else {
                             res.error("There was an error with votifier: '" + err.message + "'. Please send this error to joe@ibj.io so I can catalog it with quick tips to fix it!")
                         }

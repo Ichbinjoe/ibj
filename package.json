@@ -20,6 +20,6 @@
     "request": "^2.67.0",
     "serve-favicon": "~2.3.0",
     "votifier-send": "^0.1.5",
-    "votifier2": "0.0.2"
+    "votifier2": "0.0.5"
   }
 }
