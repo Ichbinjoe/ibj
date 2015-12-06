@@ -78,7 +78,7 @@ router.post('/', setUp, function (req, res) {
                     }
                 }, function (err) {
                     if (err) {
-                        if (err.message.contains("ECONNREFUSED")) {
+                        if (err.message.includes("ECONNREFUSED")) {
                             res.error(ip + " and the port " + port + " rejected the attempt to connect. Make sure votifier is running on this port and it isn't firewalled.");
                         } else if (err.message == 'Not a Votifier v2 protocol server') {
                             res.error(ip + ":" + port + ' is not a NuVotifier v2 port. Use the v1 option to test this server.');
