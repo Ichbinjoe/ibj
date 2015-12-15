@@ -4,10 +4,12 @@ window.onload = function() {
     var scale = chroma.scale(['green','yellow','red']);
     var runIt = function() {
         var req = new XMLHttpRequest();
-        req.open('get','/p',true);
+        req.open('get','/p?r='+Math.random(),true);
         req.onreadystatechange = function() {
             if(req.readyState == 4){
                 if(req.status != 200){
+                    pingelement.innerHTML = '&infin;';
+                    colorChanger.style.color = '#000000';
                     schedule();
                 } else {
                     var diff = new Date().getTime() - time;
