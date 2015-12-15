@@ -1,0 +1,11 @@
+extends ../layout
+block script
+    script(src='/js/ping.js')
+    script(src='/js/chroma.min.js')
+block content
+    div.horizCenter.vertCenterContainer.fullVert
+            div.vertCenter
+                div
+                    span#pingIndicator
+                        span#ping &infin;
+                        span.ms ms
