@@ -87,7 +87,7 @@ router.post('/', setUp, function (req, res) {
                         } else if (err.message == 'Socket timeout') {
                             res.error(ip + " and the port " + port + " did not respond. Make sure votifier is running on this port and it isn't firewalled.");
                         } else {
-                            res.error("There was an error with votifier: '" + err.message + "'. Please send this error to joe@ibj.io so I can catalog it with quick tips to fix it!")
+                            res.error("There was an error with votifier: '" + err.message + "'. Please send this error to joe@ibj.io so I can catalog it with quick tips to fix it!\n Date: "+new Date().toString())
                         }
                     } else {
                         res.info("Version 2 sent successfully to " + req.body.ip + " for player " + req.body.playername + "!");
