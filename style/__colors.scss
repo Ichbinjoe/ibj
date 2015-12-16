@@ -11,6 +11,8 @@ $alert-border: darken($alert-bg, 10%);
 $alert-error-bg: lighten(red, 40%);
 $alert-info-bg: lighten(skyblue, 10%);
 
+$tip-color: red;
+
 body {
   background-color: $primary-background;
   color: $text-color;
@@ -22,4 +24,9 @@ a {
 
 a:visited {
   color: $text-color; //Do not change for when link is visited
+}
+
+#tipzone {
+  color: $tip-color;
+  font-size: 1em;
 }
