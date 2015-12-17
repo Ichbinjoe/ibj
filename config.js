@@ -15,7 +15,7 @@ if(!fs.existsSync('config.json')){
                 cfg[key] = deflt[key];
             }
         }
-        fs.writeFileSync('config.json',JSON.stringify(cfg))
+        fs.writeFileSync('config.json',JSON.stringify(cfg,null,'\t'))
     }
 }
 
