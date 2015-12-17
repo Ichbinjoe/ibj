@@ -11,15 +11,17 @@ var votifier2 = require('votifier2');
 var config = require('../config');
 
 function setUp(req, res, next) {
-    res.locals.errors = [];
-    res.locals.info = [];
+    res.locals.errors = req.session.errors || [];
+    res.locals.info = req.session.info || [];
+    req.session.info = []; req.session.errors = [];
     res.locals.sitekey = config.recaptcha.sitekey;
+
     res.info = function (s) {
-        res.locals.info.push(s);
+        req.session.info.push(s);
     };
 
     res.error = function (s) {
-        res.locals.errors.push(s);
+        req.session.errors.push(s);
     };
     next();
 }
@@ -62,7 +64,7 @@ router.post('/', setUp, function (req, res) {
 
         var cont = function () {
             if (res.locals.errors.length > 0) {
-                return res.render('v/votifier');
+                return res.redirect('/v');
             }
 
             if (isv2) {
@@ -92,7 +94,7 @@ router.post('/', setUp, function (req, res) {
                     } else {
                         res.info("Version 2 sent successfully to " + req.body.ip + " for player " + req.body.playername + "!");
                     }
-                    res.render('v/votifier');
+                    res.redirect('/v');
                 })
             } else {
                 try {
@@ -113,12 +115,12 @@ router.post('/', setUp, function (req, res) {
                                 res.error("There was an error while sending the vote! Please send the following to joe@ibj.io so I can add helpful info about solving the error: "+err);
                             }
                         } else res.info("Version 1 vote sent to " + req.body.ip + ' for player ' + req.body.playername + "! This DOES NOT mean the vote succeeded! Check the server console to make sure it went through!");
-                        res.render('v/votifier');
+                        res.redirect('/v');
                     })
                 } catch (e) {
                     if (e.message == 'encoding too long') {
                         res.error('The key passed was not a valid public key. Please make sure you are copying the key from your server correctly!');
-                        res.render('v/votifier');
+                        res.redirect('/v')
                     }
                 }
             }
@@ -153,7 +155,6 @@ router.post('/', setUp, function (req, res) {
 
 function renderWError(error, res) {
     res.error(error);
-    return res.status(400).render('v/votifier');
-
+    return res.redirect("/v");
 }
 module.exports = router;

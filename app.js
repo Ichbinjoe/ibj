@@ -6,17 +6,18 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var FileStreamRotator = require('file-stream-rotator');
-
+var session = require('express-session');
+var connect_redis = require('connect-redis')(session);
 var sass = require('node-sass');
 
 var renderSassFile = (name) => {
-    console.log("Prerendering "+name+".scss..");
-    var outFile = path.join(__dirname,'public/css/'+name+'.css');
-    if(fs.existsSync(outFile)){
+    console.log("Prerendering " + name + ".scss..");
+    var outFile = path.join(__dirname, 'public/css/' + name + '.css');
+    if (fs.existsSync(outFile)) {
         fs.unlinkSync(outFile)
     }
-    fs.writeFile(outFile,sass.renderSync({
-        file: path.join(__dirname, 'style/build/'+name+'.scss')
+    fs.writeFile(outFile, sass.renderSync({
+        file: path.join(__dirname, 'style/build/' + name + '.scss')
     }).css);
 };
 
@@ -29,6 +30,14 @@ var cfg = require('./config');
 var routes = require('./routes/index');
 
 var app = express();
+var isDev = app.get('env') === 'development';
+
+if (isDev) {
+    console.log("*********DEVELOPMENT MODE*********");
+    console.log("Do not run on production systems!")
+} else {
+    app.set('trust proxy', 1);
+}
 
 app.use(require('./routes/pingfast'));
 
@@ -62,6 +71,14 @@ app.use(cookieParser());
 
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use(session({
+    secret: cfg.session.secret,
+    store: isDev ? null : new connect_redis(cfg.session.redis),
+    cookie: {
+        secure: !isDev
+    }
+}));
+
 app.use('/', routes);
 app.use('/v', require('./routes/votifier'));
 app.use('/ping', require('./routes/ping'));
@@ -77,7 +94,7 @@ app.use(function (req, res, next) {
 
 // development error handler
 // will print stacktrace
-if (app.get('env') === 'development') {
+if (isDev) {
     app.use(function (err, req, res, next) {
         res.status(err.status || 500);
         res.render('error', {

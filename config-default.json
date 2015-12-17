@@ -1,5 +1,5 @@
 {
-    "version": 2,
+    "version": 3,
     "logDir": "<logdir>",
     "recaptcha": {
         "secret": "<secret secret>",
@@ -10,5 +10,13 @@
     },
     "github": {
         "updateKey": "<updatekey>"
+    },
+    "session": {
+        "secret": "lolz keyboard cat",
+        "redis": {
+            "host": "localhost",
+            "port": 6379,
+            "pass": "passlolz"
+        }
     }
 }
