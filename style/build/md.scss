@@ -1,11 +1,8 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto);
-
-body {
-  font-family: 'Roboto', sans-serif;
-  padding: 50px;
-}
+@import 'style';
 
 .wrapper {
+  padding: 50px;
   min-width: 400px;
   width: 80%;
   max-width: 800px;
@@ -27,7 +24,7 @@ code {
 }
 
 table {
-  margin: auto;
+  margin: 25px auto;
   vertical-align: middle;
   text-align: center;
   border-collapse: collapse;
@@ -38,8 +35,16 @@ td, th {
   padding: 10px;
 }
 
+tr{
+  background-color: #ffffff;
+}
+
+tr:nth-child(odd){
+  background-color: #f0f0f0;
+}
+
 th {
-  background-color: #fcfcfc;
+  background-color: #ffffff;
 }
 
 td {
@@ -47,11 +52,3 @@ td {
   white-space: nowrap;
 }
 
-h1, h2, h3, h4, h5 {
-  color: #4d4d4d;
-}
-
-a {
-  text-decoration: none;
-  color: #7447d1;
-}

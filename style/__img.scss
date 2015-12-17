@@ -17,3 +17,11 @@
 .fit50 {
   @include fit(50px);
 }
+
+img.forkmebanner{
+  position: absolute;
+  top: 0;
+  right: 0;
+  border: 0;
+  padding: 0;
+}
