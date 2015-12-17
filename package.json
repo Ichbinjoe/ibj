@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "nodemon ./bin/www"
   },
   "dependencies": {
     "body-parser": "~1.13.2",
@@ -16,11 +16,11 @@
     "jstransformer-marked": "~1.0.1",
     "lodash": "^3.0.0",
     "morgan": "~1.6.1",
-    "node-sass-middleware": "~0.9.7",
+    "nodemon": "1.8.1",
+    "node-sass": "latest",
     "request": "^2.67.0",
     "serve-favicon": "~2.3.0",
     "votifier-send": "^0.1.5",
-    "votifier2": "0.0.5",
-    "node-sass": "latest"
+    "votifier2": "0.0.5"
   }
 }
