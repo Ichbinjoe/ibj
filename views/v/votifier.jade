@@ -85,7 +85,8 @@ block content
             div.alert.info=i
         form.horizCenter(method='post')
             div.input
-                label Votifier IP(:port (defaults to 8192))
+                label Votifier IP (ip[:port])
+                span Port defaults to 8192
                 input#ip(type='text' maxlength=255 placeholder='127.0.0.1' name='ip' oninput='validateSubmission()' required)
             div.input
                 label Method
