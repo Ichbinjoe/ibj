@@ -186,7 +186,7 @@ worthy, while still blocking other websites. I have found that uBlock Origin (go
 
 #### Eyeo (Ad Block Plus)
 
-Ad Block Plug has a practice of 'acceptable advertising'. The idea of acceptable advertising is that companies can submit
+Ad Block Plus has a practice of 'acceptable advertising'. The idea of acceptable advertising is that companies can submit
 advertisements to Eyeo with an administrative fee for the advertisement to be approved as unobtrusive, and not be blocked
 by their ad blocking plugins. The issue comes into play when dealing with the idea of the internet. The internet is a
 decentralized body with no single administrative body controlling any single part of the internet. Eyeo, by taking acceptable
@@ -211,7 +211,7 @@ Opera | [uBlock](https://github.com/chrisaljoudi/uBlock)
 iOS | [1Blocker](https://1blocker.com/)
 
 `none`: The only ad-blocker I could find for Internet Explorer is eyeo's Ad Block Plus. The issues with Ad Block Plus are
-described [above](#picks-per-browser-based-on-acceptability).
+described [above](#eyeo-ad-block-plus-).
 
 `Safari`: uBlock, as of October 2015 is no longer supporting Safari, since the API which uBlock used had become deprecated
 (end of life). There are other solutions, however I have not had adequite time to review them. The conversation regarding
