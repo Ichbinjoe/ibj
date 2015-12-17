@@ -1,5 +1,5 @@
 {
-    "version": 1,
+    "version": 2,
     "logDir": "<logdir>",
     "recaptcha": {
         "secret": "<secret secret>",
@@ -7,5 +7,8 @@
     },
     "votifier":{
         "serviceName": "ibj.io"
+    },
+    "github": {
+        "updateKey": "<updatekey>"
     }
 }

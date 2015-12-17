@@ -53,6 +53,9 @@ var accessLogStream = FileStreamRotator.getStream({
 });
 
 app.use(logger('combined', {stream: accessLogStream}));
+
+app.use('/update', require('./routes/update'));
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
