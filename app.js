@@ -39,8 +39,6 @@ if (isDev) {
     app.set('trust proxy', 1);
 }
 
-app.use(require('./routes/pingfast'));
-
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
@@ -81,7 +79,7 @@ app.use(session({
 
 app.use('/', routes);
 app.use('/v', require('./routes/votifier'));
-app.use('/ping', require('./routes/ping'));
+app.use('/p', require('./routes/ping'));
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
