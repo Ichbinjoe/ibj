@@ -24,7 +24,9 @@
     "nodemon": "1.8.1",
     "request": "^2.67.0",
     "serve-favicon": "~2.3.0",
+    "socket.io": "^1.3.7",
     "votifier-send": "^0.1.5",
-    "votifier2": "0.0.5"
+    "votifier2": "0.0.5",
+    "websocket": "^1.0.22"
   }
 }
