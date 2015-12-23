@@ -53,9 +53,9 @@ router.post('/', setUp, function (req, res) {
             response: g_response
         }
     }, function (error, response, body) {
-        if (error) return renderWError("There was an error verifying your recaptcha!", res);
+        if (error) res.error("There was an error verifying your recaptcha!", res);
         var bdy = JSON.parse(body);
-        if (!bdy.success) return renderWError("Recaptcha failed!", res);
+        if (!bdy.success) res.error("Recaptcha failed!", res);
 
         if (req.body.playername.length > 16) res.error('Playername cannot be greater than 16 chars!');
         var ipsplit = req.body.ip.split(':');
@@ -152,9 +152,4 @@ router.post('/', setUp, function (req, res) {
     });
 });
 
-
-function renderWError(error, res) {
-    res.error(error);
-    return res.redirect("/v");
-}
 module.exports = router;
