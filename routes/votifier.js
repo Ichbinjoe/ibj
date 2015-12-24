@@ -94,7 +94,11 @@ router.post('/', setUp, function (req, res) {
                     } else {
                         res.info("Version 2 sent successfully to " + req.body.ip + " for player " + req.body.playername + "!");
                     }
-                    res.redirect('/v');
+                    try {
+                        res.redirect('/v');
+                    } catch (e) {
+                        console.error(e);
+                    }
                 })
             } else {
                 try {
