@@ -18,5 +18,12 @@
             "port": 6379,
             "pass": "passlolz"
         }
-    }
+    },
+    "db": {
+        "username": "username",
+        "password": "password",
+        "host": "localhost",
+        "database": "database"
+    },
+    "uploadkey": "test"
 }

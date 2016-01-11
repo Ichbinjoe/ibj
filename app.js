@@ -64,7 +64,7 @@ app.use(logger('combined', {stream: accessLogStream}));
 app.use('/update', require('./routes/update'));
 
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.urlencoded({extended: true}));
 app.use(cookieParser());
 
 app.use(express.static(path.join(__dirname, 'public')));
@@ -77,6 +77,7 @@ app.use(session({
     }
 }));
 
+app.use('/',require('./routes/artifacts'));
 app.use('/', routes);
 app.use('/v', require('./routes/votifier'));
 app.use('/p', require('./routes/ping'));
