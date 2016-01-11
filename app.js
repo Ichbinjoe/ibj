@@ -5,7 +5,6 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var FileStreamRotator = require('file-stream-rotator');
 var session = require('express-session');
 var connect_redis = require('connect-redis')(session);
 var sass = require('node-sass');
@@ -46,20 +45,7 @@ app.set('view engine', 'jade');
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 
-
-var logDirectory = cfg.logDir;
-
-// ensure log directory exists
-fs.existsSync(logDirectory) || fs.mkdirSync(logDirectory);
-
-// create a rotating write stream
-var accessLogStream = FileStreamRotator.getStream({
-    filename: logDirectory + '/access-%DATE%.log',
-    frequency: '7d',
-    verbose: false
-});
-
-app.use(logger('combined', {stream: accessLogStream}));
+app.use(logger('combined'));
 
 app.use('/update', require('./routes/update'));
 
