@@ -65,7 +65,7 @@ router.get('/:artifact', (req, res, next) => {
     var afact = req.params.artifact;
     find(afact, next, function (mydat) {
         if (mydat.dtype == 0) { //image
-            let ua = res.headers['user-agent'];
+            var ua = res.headers['user-agent'];
             if (ua.contains('Preview') || ua.contains('Bot')) {
                 res.end(mydat.contents);
             } else {
