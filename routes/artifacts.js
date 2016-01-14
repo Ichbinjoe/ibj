@@ -65,7 +65,12 @@ router.get('/:artifact', (req, res, next) => {
     var afact = req.params.artifact;
     find(afact, next, function (mydat) {
         if (mydat.dtype == 0) { //image
-            res.render('artifact/image', {source: '/' + afact + '/' + mydat.name});
+            let ua = res.headers['user-agent'];
+            if (ua.contains('Preview') || ua.contains('Bot')) {
+                res.end(mydat.contents);
+            } else {
+                res.render('artifact/image', {source: '/' + afact + '/' + mydat.name});
+            }
         } else if (mydat.dtype == 1) { //File
             res.redirect('/' + afact + "/" + mydat.name);
         } else if (mydat.dtype == 3) { //URL Redirect
@@ -96,12 +101,12 @@ router.get('/:artifact/:name', (req, res, next) => {
     })
 });
 
-router.get('/shorten', (req,res,next) => {
+router.get('/shorten', (req, res, next) => {
     if (req.headers.key != config.uploadkey) {
         return res.sendStatus(403);
     }
 
-    if(!req.query.url) {
+    if (!req.query.url) {
         return res.sendStatus(400);
     }
 
