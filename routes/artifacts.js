@@ -97,7 +97,6 @@ router.get('/:artifact/:name', (req, res, next) => {
 });
 
 router.post('/shorten', upload.fields([{name: 'key', maxCount: 1}, {name: 'url', maxCount: 1}]), (req, res, next) => {
-    console.log(req.body);
     if (req.body.key != config.uploadkey) {
         return res.sendStatus(403);
     }
@@ -124,7 +123,6 @@ router.post('/upload', upload.single('data'), (req, res, next) => {
 
     var redir = function (err, tag) {
         if (err) {
-            console.log(err);
             res.sendStatus(500);
             return;
         }
@@ -134,7 +132,6 @@ router.post('/upload', upload.single('data'), (req, res, next) => {
     content = req.file.buffer;
     name = req.file.originalname;
 
-    console.log(content);
     var type = mime.lookup(name);
 
     uploadA(type, content, name, redir);
