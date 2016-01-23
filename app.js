@@ -86,6 +86,7 @@ if (isDev) {
             message: err.message,
             error: err
         });
+        console.log(err);
     });
 }
 
@@ -97,6 +98,7 @@ app.use(function (err, req, res, next) {
         message: err.message,
         error: {}
     });
+    console.log(err);
 });
 
 
