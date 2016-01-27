@@ -6,7 +6,7 @@ var upload = multer({storage: storage});
 var config = require('../config');
 var crypto = require('crypto');
 var mime = require('mime');
-var bodyParser = require('body-parser');
+var escape = require('escape-html');
 
 client(function (err, client, done) {
     if (err) {
@@ -77,7 +77,9 @@ router.get('/:artifact', (req, res, next) => {
         } else if (mydat.mimetype == "application/urlredirect") { //URL Redirect
             res.redirect(mydat.contents.toString());
         } else if (mydat.mimetype.startsWith("text/")) { //Probably text.
-            res.render('artifact/text', {href: '/' + afact + '/'+mydat.name, content: String(mydat.contents)});
+            var content = String(mydat.contents);
+            content = escape(content).replace(new RegExp("\r\n|\n"),"<br>")
+            res.render('artifact/text', {href: '/' + afact + '/'+mydat.name, content: content});
         } else { //File
             res.redirect('/' + afact + "/" + mydat.name);
         }
