@@ -78,7 +78,7 @@ router.get('/:artifact', (req, res, next) => {
             res.redirect(mydat.contents.toString());
         } else if (mydat.mimetype.startsWith("text/")) { //Probably text.
             var content = String(mydat.contents);
-            content = escape(content).replace(new RegExp("\r\n|\n"),"<br>")
+            content = escape(content).replace(new RegExp("/\r\n|\n/g"),"<br>")
             res.render('artifact/text', {href: '/' + afact + '/'+mydat.name, content: content});
         } else { //File
             res.redirect('/' + afact + "/" + mydat.name);

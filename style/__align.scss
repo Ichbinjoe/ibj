@@ -15,8 +15,13 @@
   height: 100%;
 }
 
+.group{
+  display: inline-block
+}
+
 .fullWidth {
   width: 100%;
+  clear: both;
 }
 
 .all {
