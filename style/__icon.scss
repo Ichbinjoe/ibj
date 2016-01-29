@@ -1,5 +1,6 @@
 @import '__colors.scss';
 
+$icon-transitions: background-color 0.35s ease-out;
 .icon {
   width: 120px;
   height: 120px;
@@ -33,8 +34,15 @@
   padding-right: 10px;
 }
 
+a.rounded {
+  -webkit-transition: $icon-transitions;
+  -moz-transition: $icon-transitions;
+  -o-transition: $icon-transitions;
+  transition: $icon-transitions;
+}
+
 a.rounded:hover {
-  background-color: darken($primary-background, 30%)
+  background-color: darken($primary-background, 20%)
 }
 
 .iconrow {
