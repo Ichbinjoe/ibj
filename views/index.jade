@@ -55,16 +55,6 @@ block content
                                 img(src='/imgs/css-logo.png' class='fit50 rounded')
                     hr
             div.container
-                div.group.horizCenter
-                    div.container.fullWidth
-                        div.iconrow
-                            a(class='textItem' href='/ad')='Ethical Advertising'
-                            a(class='textItem' href='/v')='Votifier Tester'
-                            a.textItem(href='/p')='Ping Meter'
-                            a.textItem(href='/2fa')='MCAuthenticator'
-                            a.textItem(href='/keys/id_rsa.pub')='SSH Public Key'
-                    div.container.fullWidth
-                        div.iconrow
-                            a.textItem='PGP Keys for:'
-                            a.textItem(href='/keys/joe@ibj.io.asc')='joe@ibj.io'
-                            a.textItem(href='/keys/hirschjb@mail.uc.edu.asc')='hirschjb@mail.uc.edu'
+                include links.jade
+block footer
+//Ignore footer

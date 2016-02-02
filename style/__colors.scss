@@ -2,7 +2,7 @@ $primary-background: darken(white, 2%);
 $text-color: lighten(black, 30%);
 
 $form-input-bg: lighten($primary-background, 10%);
-$form-input-border-color: darken($primary-background,20%);
+$form-input-border-color: darken($primary-background, 20%);
 $form-submit-bg: #0f0;
 
 $alert-bg: darken($primary-background, 20%);
@@ -24,6 +24,10 @@ a {
 
 a:visited {
   color: $text-color; //Do not change for when link is visited
+}
+
+a.brandlink {
+  text-decoration: none;
 }
 
 #tipzone {
