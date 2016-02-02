@@ -10,7 +10,11 @@ router.get('/ad', function (req, res, next) {
     res.render('ad/ad');
 });
 
-router.get('/robots.txt', (req,res) => {
+router.get('/2fa', function (req, res, next) {
+    res.render('2fa/2fa');
+});
+
+router.get('/robots.txt', (req, res) => {
     res.status(200).send("User-agent: * \n Disallow: ")
 });
 module.exports = router;
