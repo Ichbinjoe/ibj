@@ -72,14 +72,14 @@ router.get('/:artifact', (req, res, next) => {
             if (ua.includes('Preview') || ua.includes('Bot')) {
                 res.end(mydat.contents);
             } else {
-                res.render('artifact/image', {source: '/' + afact + '/' + mydat.name});
+                res.render('artifact/image', {source: '/' + afact + '/' + mydat.name, afactid: afact});
             }
         } else if (mydat.mimetype == "application/urlredirect") { //URL Redirect
             res.redirect(mydat.contents.toString());
         } else if (mydat.mimetype.startsWith("text/")) { //Probably text.
             var content = String(mydat.contents);
-            content = escape(content).replace(new RegExp("/\r\n|\n/g"),"<br>")
-            res.render('artifact/text', {href: '/' + afact + '/'+mydat.name, content: content});
+            content = escape(content).replace(new RegExp("/\r\n|\n/g"),"<br>");
+            res.render('artifact/text', {href: '/' + afact + '/'+mydat.name, content: content, afactid: afact});
         } else { //File
             res.redirect('/' + afact + "/" + mydat.name);
         }
