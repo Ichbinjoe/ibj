@@ -41,7 +41,7 @@ function uploadA(type, content, name, cb) {
     hash.update(content);
     var digest = hash.digest('base64');
     var tag = digest.substr(0, 4);
-    tag = tag.replace('/\//g', '@');
+    tag = tag.replace(/\//g, '@');
     client(function (err, client, done) {
         if (err) {
             done();
